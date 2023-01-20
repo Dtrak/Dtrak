@@ -1,0 +1,71 @@
+{
+    "version": "1.0.0",
+    "controls": [
+        {
+            "name": "kernel",
+            "directive": "read_file",
+            "program_name": "cat",
+            "file_to_read": "/proc/version",
+            "command": "cat /proc/version",
+            "score": 1,
+            "regex_control": [
+                {
+                    "regex": "[\\d\\.]+",
+                    "regex_group": 0,
+                    "type": "version",
+                    "expected_output": "5.4.1"
+                }
+            ]
+        },
+        {
+            "name": "OS",
+            "directive": "read_file",
+            "program_name": "cat",
+            "file_to_read": "/etc/issue",
+            "command": "cat /etc/issue",
+            "score": 2,
+            "regex_control": [
+                {
+                    "regex": "[\\d\\.]+",
+                    "regex_group": 0,
+                    "type": "version",
+                    "expected_output": "20.04.4"
+                }
+            ]
+        },
+        {
+            "name": "LockScreen",
+            "directive": "run_prog",
+            "program_name": "cat",
+            "file_to_read": "",
+            "command": "gsettings get org.gnome.desktop.screensaver lock-enabled",
+            "score": 4,
+            "regex_control": [
+                {
+                    "regex": ".*",
+                    "regex_group": 0,
+                    "type": "match",
+                    "expected_output": "true"
+                }
+            ]
+        },
+        {
+            "name": "AutoUpdates",
+            "directive": "read_file",
+            "program_name": "cat",
+            "file_to_read": "/etc/apt/apt.conf.d/20auto-upgrades",
+            "command": "cat /etc/apt/apt.conf.d/20auto-upgrades",
+            "score": 8,
+            "regex_control": [
+                {
+                    "regex": "(Unattended-Upgrade \")([01])",
+                    "regex_group": 2,
+                    "type": "match",
+                    "expected_output": "1"
+                }
+            ]
+        }
+    ],
+    "minscore_high": 15,
+    "minscore_med": 8
+}
