@@ -6,6 +6,7 @@ DTRAK is a zero trust device vulnerability assessment tool that checks a user de
 DTRAK has two major parts. Config file, with all the parameters, and DTRAK, that checks whether those parameters are met, and generates a report based on it which can be later implemented by third party services, to ensure device security and avoid data breach because of a compromised device. Config file is secured at a server written in python, and the device test is performed at the client end in C++.
 
 Step 1:Key generation:-
+
 To implement the DTRAK, first you need to generate your own RSA keypair. You can generate it by any method you want, or follow the below steps in order to generate it:-
 Run the following command in your terminal:-
 openssl genrsa -des3 -out private.pem 2048
@@ -15,6 +16,7 @@ openssl rsa -in private.pem -outform PEM -pubout -out public.pem
 This will generate private.pem and public.pem files.
 
 Step 2:Implementing config encryption:-
+
 Now, you need a system on your server to sign the config file, so that it can be verified for any manipulations on the client end. We highly recommend this step to ensure the safety measures have been taken and trustlevel is calculated on the predefined parameters. This part of code is written in python, so you need to do some setup.
 
 Requirements for python code:- 
@@ -42,6 +44,7 @@ Requirements for C++ code:-
 g++ compiler
 
 Setup:-
+
 Download the C++ code from github (https://github.com/Dtrak/dtrak/tree/main/Interceptor)
 Download cryptopp library from it’s official website (https://cryptopp.com/#download)
 Download cryptopp PEM pack from Git (https://github.com/noloader/cryptopp-pem)
