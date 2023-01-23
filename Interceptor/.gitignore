@@ -1,0 +1,14 @@
+bin/
+dist/
+*.exe
+.vscode/
+Makefile
+bin-int/
+*.make
+cin.txt
+cout.txt
+*.sln
+*.vcxproj*
+.vs
+vendor/*
+!vendor/README.md
