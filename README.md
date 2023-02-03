@@ -60,7 +60,7 @@ Copy this file, and paste it into the libs, outside the cryptopp870 folder.
 Make and run commands:-
 Open the Interceptor folder, open terminal, and run command “premake5 gmake2”
 Run “make config=debug”
-Navigate to src/Debug-linux-x86_64
+Navigate to bin/Debug-linux-x86_64
 Run ./Interceptor.
 Run ./Interceptor chrome-extension=authvr5
 This will write the trustlevel to the result.txt file
